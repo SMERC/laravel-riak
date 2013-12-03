@@ -18,6 +18,7 @@ namespace BachPedersen\LaravelRiak;
 
 use Illuminate\Support\ServiceProvider;
 use Riak\Connection;
+use Basho;
 
 class RiakServiceProvider extends ServiceProvider
 {
@@ -51,7 +52,7 @@ class RiakServiceProvider extends ServiceProvider
             $riakConfig = $app['config']['database.riak'];
             $host = $riakConfig['host'];
             $port = $riakConfig['port'];
-            return new Connection($host, $port);
+            return new Basho\Riak\Riak($host, $port);
         });
 	}
 
